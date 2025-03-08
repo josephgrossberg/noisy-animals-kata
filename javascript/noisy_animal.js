@@ -1,54 +1,27 @@
 function createNoisyAnimal(species) {
-  const birdNoiseMap = {
+  const animalNoiseMap = {
     owl: 'hoot',
     eagle: 'caw',
-    hadedah: 'squawk'
-  };
-
-  const mammalNoiseMap = {
+    hadedah: 'squawk',
     cat: 'meow',
     dog: 'woof',
     leopard: 'growl'
   };
 
-  function isBird() {
-    return Object.keys(birdNoiseMap).includes(species);
-  }
-
-  function isMammal() {
-    return Object.keys(mammalNoiseMap).includes(species);
-  }
-  function birdNoise() {
-    return birdNoiseMap[species];
-  }
-
-  function mammalNoise() {
-    return mammalNoiseMap[species];
-  }
-
-  function makeMammalNoise(isLoud = true) {
-    console.log(mammalNoise());
+  function makeAnimalNoise(isLoud = true) {
+    const noise = animalNoiseMap[species];
+    console.log(noise);
     if (isLoud) {
-        console.log(mammalNoise());
-    }
-  } 
-
-  function makeBirdNoise(isLoud = true) {
-    if (species === 'hadedah' && !isLoud) {
-      throw new Error('there is no such thing as a quiet hadedah!');
-    }
-    console.log(birdNoise());
-    if (isLoud) {
-      console.log(birdNoise());
+      console.log(noise);
     }
   }
 
   function makeNoise({ loud = true } = {}) {
-    if (isBird()) {
-      makeBirdNoise(loud);
-    } else if (isMammal()) {
-      makeMammalNoise(loud);
+    if (species === 'hadedah' && !loud) {
+      throw new Error('there is no such thing as a quiet hadedah!');
     }
+
+    makeAnimalNoise(loud);
   }
 
   return {
